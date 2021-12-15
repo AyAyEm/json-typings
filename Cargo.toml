@@ -33,3 +33,7 @@ debug = 1
 [[bench]]
 name = "typing"
 harness = false
+
+[[bin]]
+name = "json-typings"
+path = "src/bin/main.rs"
