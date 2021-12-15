@@ -1,12 +1,12 @@
 use std::{error::Error, fs, path::Path};
 
-use clap::{App, Arg};
+use clap::{App, Arg, crate_version, crate_authors};
 use json_typings::{read_json, strategy::Strategy, validators, Settings, Typing, SETTINGS};
 
 fn main() -> Result<(), Box<dyn Error>> {
     let matches = App::new("Json typings")
-        .version("1.0.0")
-        .author("André Azevedo Meira <AyAyEm.dev@gmail.com>")
+        .version(crate_version!())
+        .author(crate_authors!())
         .about("Converts JSON files into typescript typing declarations")
         .arg(
             Arg::with_name("config")
@@ -54,7 +54,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 .default_value("index.d.ts"),
         )
         .arg(
-            Arg::with_name("INPUT")
+            Arg::with_name("INPUT_FILE")
                 .help("Sets the input file to use")
                 .required(true)
                 .index(1)
@@ -90,7 +90,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         SETTINGS.write().strategy = Strategy::Tree;
     }
 
-    let input = matches.value_of("INPUT").unwrap();
+    let input = matches.value_of("INPUT_FILE").unwrap();
     let value = read_json::file(Path::new(input))?;
 
     let typings = match &SETTINGS.read().strategy {
