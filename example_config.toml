@@ -1,0 +1,3 @@
+string_separator = "\""
+indentation = "  "
+nesting_level = 0
