@@ -34,6 +34,9 @@ debug = 1
 name = "typing"
 harness = false
 
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1"
+
 [[bin]]
 name = "json-typings"
 path = "src/bin/main.rs"
