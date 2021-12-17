@@ -35,5 +35,5 @@ name = "typing"
 harness = false
 
 [[bin]]
-name = "json-typings"
+name = "jsontypings"
 path = "src/bin/main.rs"
